@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+  
+    
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"></div>
+    <script src="js/three.js"></script>
+    <script src="js/OBJLoader.js"></script>
+    <script>
+      
+      var scene = new THREE.Scene();
+      //scene.background = new THREE.Color(0xffffff);
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+      var loader = new THREE.OBJLoader();
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			/*var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+			var material = new THREE.MeshBasicMaterial( { color: 0x000000  } );
+			var cube = new THREE.Mesh( geometry, material );
+			scene.add( cube );*/
+
+
+// load a resource
+loader.load(
+	'./r2-d2.obj',
+	function ( object ) {
+		scene.add( object );
+	},
+	function ( xhr ) {
+		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+	},
+	function ( error ) {
+		console.log( 'An error happened' );
+	}
+);
+			camera.position.z = 5;
+
+			var animate = function () {
+				requestAnimationFrame( animate );
+				renderer.render( scene, camera );
+			};
+
+			animate();
+		</script>
+   
+  </body>
+</html>
