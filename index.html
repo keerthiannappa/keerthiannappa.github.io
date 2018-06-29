@@ -57,8 +57,8 @@
 				scene.add( camera );
 				// texture
 				var manager = new THREE.LoadingManager();
-				var textureLoader = new THREE.TextureLoader( manager );
-				var texture = textureLoader.load( '' );
+				/*var textureLoader = new THREE.TextureLoader( manager );
+				var texture = textureLoader.load( '' );*/
 				
 				manager.onProgress = function ( item, loaded, total ) {
 					console.log( item, loaded, total );
