@@ -69,10 +69,13 @@
 				camera.add( pointLight );
 				scene.add( camera );
 				// texture
+				var textureLoader = new THREE.TextureLoader( manager );
+				var texture = textureLoader.load( 'textures/UV_Grid_Sm.jpg' );
 				var manager = new THREE.LoadingManager();
 				manager.onProgress = function ( item, loaded, total ) {
 					console.log( item, loaded, total );
 				};
+			
 				var onProgress = function ( xhr ) {
 					if ( xhr.lengthComputable ) {
 						var percentComplete = xhr.loaded / xhr.total * 100;
