@@ -41,21 +41,8 @@
 			var mouseX = 0, mouseY = 0;
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
-			var loader = new THREE.ColladaLoader();
- 
-  
-  			loader.options.convertUpAxis = true;
- 
- 
-  			loader.load( './car.dae', function ( collada ) {
- 
-   
-   			 dae = collada.scene;
- 
-   
-   			 dae.scale.x = dae.scale.y = dae.scale.z = 25.0;
 			init();
-			animate();});
+			animate();
 			function init() {
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
@@ -70,7 +57,7 @@
 				scene.add( camera );
 				// texture
 				var textureLoader = new THREE.TextureLoader( manager );
-				var texture = textureLoader.load( 'textures/UV_Grid_Sm.jpg' );
+				var texture = textureLoader.load( '' );
 				var manager = new THREE.LoadingManager();
 				manager.onProgress = function ( item, loaded, total ) {
 					console.log( item, loaded, total );
@@ -99,9 +86,9 @@
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				//document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				//
-				window.addEventListener( 'resize', onWindowResize, false );
+				//window.addEventListener( 'resize', onWindowResize, false );
 			}
 			function onWindowResize() {
 				windowHalfX = window.innerWidth / 2;
@@ -120,8 +107,8 @@
 				render();
 			}
 			function render() {
-				camera.position.x += ( mouseX - camera.position.x ) * .05;
-				camera.position.y += ( - mouseY - camera.position.y ) * .05;
+				//camera.position.x += ( mouseX - camera.position.x ) * .05;
+				//camera.position.y += ( - mouseY - camera.position.y ) * .05;
 				camera.lookAt( scene.position );
 				renderer.render( scene, camera );
 			}
