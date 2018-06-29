@@ -85,7 +85,7 @@
 				loader.load( './car.obj', function ( object ) {
 					object.traverse( function ( child ) {
 						if ( child instanceof THREE.Mesh ) {
-							child.material.map = texture;
+							
 						}
 					} );
 					object.position.y = - 95;
